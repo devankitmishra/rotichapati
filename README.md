@@ -1,7 +1,7 @@
 
 # RotiChapati
 
-**RotiChapati** is a full-stack food delivery application designed as a CRUD eCommerce platform. This app allows users to browse, filter food items, place orders, manage their cart, and complete online payments through a payment gateway. The project is currently under construction, with the frontend being 80% complete.
+**RotiChapati** is a full-stack food delivery application designed as a CRUD eCommerce platform. This app allows users to browse, filter food items, place orders, manage their cart, and complete online payments through a payment gateway. The project is currently under construction.
 
 ## Features (Planned)
 - Browse and filter food items
@@ -11,8 +11,8 @@
 - Admin panel for managing food items, categories, and orders
 
 ## Project Status
-- **Frontend:** 80% completed
-- **Backend:** Not yet started
+- **Frontend:** 85% completed
+- **Backend:** 20% completed
 
 ## Tech Stack
 - **Frontend:** [React js, CSS]
