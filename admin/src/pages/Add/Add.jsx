@@ -35,10 +35,10 @@ const Add = ({url}) => {
     const response = await axios.post(`${url}/api/food/add`, formData);
     if (response.data.success) {
       setData({
+        ...data, // Keep category intact
         name: "",
         description: "",
-        price: "",
-        category: "Salad"
+        price: ""
       })
       setImage(false)
       toast.success(response.data.message)
