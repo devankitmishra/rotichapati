@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 // placing user order for frontend
 const placeOrder = async (req,res) => {
 
-    const frontend_url = "http://localhost:5173"
+    const frontend_url = "http://localhost:5174"// change it to proper url
 
     try {
         const newOrder = new orderModel({
@@ -72,4 +72,38 @@ const verifyOrder = async (req,res) => {
     }
 }
 
-export {placeOrder,verifyOrder}
+
+// user orders for frontend
+const userOrders = async(req,res) => {
+    try {
+        const orderes = await orderModel.find({userId:req.body.userId})
+        res.json({success:true,data:orderes})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
+
+//listing orders for admin panel
+const listOrders = async (req,res) => {
+    try {
+        const orders = await orderModel.find({});
+        res.json({success:true,data:orders})
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
+//api for updating order status
+const updateStatus = async (req,res) => {
+    try {
+        await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status})
+        res.json({success:true,message:"Status updated"})
+    } catch (error) {
+        res.json({success:false,message:"Error"})
+    }
+}
+
+export {placeOrder,verifyOrder,userOrders,listOrders,updateStatus}

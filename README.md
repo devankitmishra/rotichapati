@@ -10,17 +10,15 @@
 - Online payment integration using a payment gateway
 - Admin panel for managing food items, categories, and orders
 
-## Project Status
-- **Frontend:** 85% completed
-- **Backend:** 20% completed
-
 ## Tech Stack
-- **Frontend:** [React js, CSS]
+- **Frontend:** [React.js, Vite.js, CSS]
 - **Backend:** [Node.js, Express.js, MongoDB, Mongoose, JWT]
-- **Payment Gateway:** [Planned integration, e.g., Stripe, PayPal, RajorPay]
+- **Payment Gateway:** [Stripe]
 
 ## Getting Started
-Currently, the frontend development is in progress. To preview the work done so far:
+
+### Frontend
+The frontend development is in progress. To preview the work done so far:
 
 1. Clone the repository:
    ```bash
@@ -39,9 +37,42 @@ Currently, the frontend development is in progress. To preview the work done so 
    npm run dev
    ```
 
+### Backend
+To set up the backend API server:
+
+1. Navigate to the backend directory:
+   ```bash
+   cd rotichapati/backend
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the backend server:
+   ```bash
+   npm run server
+   ```
+
+### Admin Panel
+The admin panel is built using React (Vite). To run the admin panel:
+
+1. Navigate to the admin directory:
+   ```bash
+   cd rotichapati/admin
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the admin development server:
+   ```bash
+   npm run dev
+   ```
+
 ## Contributing
 Contributions are not allowed at this stage of development. Please stay tuned for updates.
 
 ## License
-This project is licensed under the MIT License.See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
+---
