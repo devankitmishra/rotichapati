@@ -12,15 +12,13 @@ const Orders = ({url}) => {
   const [orders,setOrders] = useState([]);
 
   const fetchAllOrders = async () => {
-    const response = await axios.get(url+"/api/order/list");
+    const response = await axios.get(url + "/api/order/list");
     if (response.data.success) {
-      setOrders(response.data.data);
-      console.log(response.data.data);
+      setOrders(response.data.data.reverse()); // Reverse the order here
+    } else {
+      toast.error("Error");
     }
-    else{
-      toast.error("Error")
-    }
-  }
+  };
 
   const statusHandler = async(event,orderId) => {
     // console.log(event,orderId);
@@ -74,6 +72,7 @@ const Orders = ({url}) => {
               <option value="Food Processing">Food Processing</option>
               <option value="Out For Delivery">Out For Delivery</option>
               <option value="Delivered">Delivered</option>
+              <option value="Canceled">Canceled</option>
             </select>
           </div>
         ))}

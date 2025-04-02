@@ -16,6 +16,7 @@
     padding: 10px 20px;
     color: #454545;
     border: 1px solid tomato;
+    border-radius: 10px;
 }
 .my-orders-order img{
     width: 50px;
@@ -35,12 +36,14 @@
     background-color: #ffe1e1;
     cursor: pointer;
     color: #454545;
+    border-radius: 10px;
 }
 
 :root .my-orders-order button{
     border: 1px solid tomato;
     background-color: black;
     color: white;
+    
 }
 
 .lightcolors .my-orders-order button{

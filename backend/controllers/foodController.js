@@ -37,13 +37,13 @@ const listFood = async (req, res) => {
 const removeFood = async (req, res) => {
   try {
     const food = await foodModel.findById(req.body.id);
-    fs.unlink(`uploads/${food.image}`, () => {})
+    fs.unlink(`uploads/${food.image}`, () => {});
 
     await foodModel.findByIdAndDelete(req.body.id);
-    res.json({success: true, message:"Food removed"})
+    res.json({ success: true, message: "Food removed" });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: "Error" })
+    res.json({ success: false, message: "Error" });
   }
 };
 
@@ -67,5 +67,35 @@ const searchFood = async (req, res) => {
   }
 };
 
+// update food items
+const updateFood = async (req, res) => {
+  try {
+    const { id, name, description, price, category } = req.body;
+    let updatedData = { name, description, price, category };
 
-export { addFood, listFood, removeFood, searchFood };
+    if (req.file) {
+      const food = await foodModel.findById(id);
+      if (food.image) {
+        fs.unlink(`uploads/${food.image}`, (err) => {
+          if (err) console.log("Error deleting old image:", err);
+        });
+      }
+      updatedData.image = req.file.filename;
+    }
+
+    const updatedFood = await foodModel.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+
+    if (!updatedFood) {
+      return res.json({ success: false, message: "Food item not found" });
+    }
+
+    res.json({ success: true, message: "Food updated", data: updatedFood });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error updating food item" });
+  }
+};
+
+export { addFood, listFood, removeFood, searchFood, updateFood };
