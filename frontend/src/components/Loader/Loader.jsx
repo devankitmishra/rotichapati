@@ -6,11 +6,17 @@ import { CircularProgress } from "@mui/material";
 const Loader = () => {
   return (
     <div className="inline-loader">
-      <CircularProgress
-        size={80}
-        thickness={3}
-        sx={{ color: "#f75a3e" }}
-      />
+      <div className="loader-wrapper">
+        <img src="/circle-logo.png" alt="logo" className="loader-logo" />
+        <CircularProgress
+          size={100}
+          thickness={1.5}
+          sx={{
+            color: "#f75a3e",
+            position: "absolute",
+          }}
+        />
+      </div>
     </div>
   );
 };

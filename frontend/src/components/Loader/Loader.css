@@ -7,3 +7,31 @@
   width: 100%;
   position: relative;
 }
+
+.loader-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.loader-logo {
+  width: 69px;
+  height: 69px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

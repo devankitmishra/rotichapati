@@ -1,7 +1,3 @@
-/* toast.css */
-.toast-container {
-}
-
 @media (max-width: 600px) {
   .toast-container {
     width: 200px;
