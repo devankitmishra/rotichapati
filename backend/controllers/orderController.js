@@ -20,6 +20,7 @@ const placeOrder = async (req, res) => {
     await newOrder.save();
     await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
     const user = await userModel.findById(req.body.userId);
+    const { firstName, lastName } = req.body.address;
 
     await sendMail(
         userEmail,
@@ -27,7 +28,7 @@ const placeOrder = async (req, res) => {
         `
           <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f7f7f7;">
             <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
-              <h2 style="color: #d35400;">Hi ${user.name},</h2>
+              <h2 style="color: #d35400;">Hi ${firstName} ${lastName},</h2>
               <p style="font-size: 16px; color: #333;">
                 Thank you for placing your order with <strong>RotiChapati</strong>! 🫓✨
               </p>
