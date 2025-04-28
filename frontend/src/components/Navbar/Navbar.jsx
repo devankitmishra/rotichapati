@@ -149,6 +149,7 @@ const Navbar = ({ setShowLogin }) => {
           .getElementById("visual-toggle-button")
           .classList.remove("lightmode");
       }
+      window.location.reload();
     });
   }, []);
 

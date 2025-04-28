@@ -80,9 +80,10 @@
 
 @media (max-width:750px) {
     .my-orders-order {
-        grid-template-columns: 2fr 0.5fr 2.5fr;
-        row-gap: 5px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 5px;
         font-size: 10px;
+
 
     }
 
@@ -95,11 +96,13 @@
         display: none;
     }
 
-    .my-orders-order p b {
+    .my-orders-order p b{
         margin: auto;
     }
 
+
     .my-orders-order button {
-        display: none;
+        width: fit-content;
+        font-size: 11px;
     }
 }

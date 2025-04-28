@@ -9,6 +9,7 @@ const MyOrders = () => {
   const { url, token } = useContext(StoreContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const mode = localStorage.getItem("mode");
 
   const fetchOrders = async () => {
     try {
@@ -83,7 +84,7 @@ const MyOrders = () => {
                     }
                   })}
                 </p>
-                <p>${order.amount}.00</p>
+                <p style={{display:"flex", alignItems:"center", justifyContent:"center"}}>${order.amount}.00</p>
                 <p className="item-count">Items: {order.items.length}</p>
                 <p>
                   <span
@@ -105,15 +106,15 @@ const MyOrders = () => {
                   onClick={() => requestCancellation(order._id)}
                   disabled={!canCancel}
                   style={{
-                    backgroundColor: "black",
-                    color: canCancel ? "white" : "#888",
-                    border: `2px solid ${canCancel ? "#ff6347" : "black"}`,                  
+                    color: canCancel ? (mode === "dark" ? "white" : "black") : "#888",
+                    border: `2px solid ${canCancel ? "#ff6347" : "transparent"}`,
                     cursor: canCancel ? "pointer" : "not-allowed",
                     boxShadow: canCancel ? "0px 4px 8px rgba(255,99,71,0.5)" : "none",
                     padding: "10px 20px",
                     borderRadius: "8px",
                     transition: "0.3s"
                   }}
+                  
                 >
                   Request Cancellation
                 </button>
