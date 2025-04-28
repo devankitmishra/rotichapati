@@ -23,9 +23,9 @@ const placeOrder = async (req, res) => {
     const { firstName, lastName } = req.body.address;
 
     await sendMail(
-        userEmail,
-        "Your RotiChapati Order Confirmation 🍛",
-        `
+      userEmail,
+      "Your RotiChapati Order Confirmation 🍛",
+      `
           <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f7f7f7;">
             <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
               <h2 style="color: #d35400;">Hi ${firstName} ${lastName},</h2>
@@ -46,8 +46,7 @@ const placeOrder = async (req, res) => {
             </div>
           </div>
         `
-      );
-      
+    );
 
     const line_items = req.body.items.map((item) => ({
       price_data: {
@@ -140,9 +139,10 @@ const updateStatus = async (req, res) => {
 
     // Check if address and email exist
     const userEmail = updatedOrder.address?.email;
+    const adminEmail = process.env.GMAIL_USER;
     console.log(userEmail);
     if (userEmail) {
-    //   console.log("Sending email to", userEmail); // debug
+      //   console.log("Sending email to", userEmail); // debug
       let statusMessage = "";
 
       if (status === "Out For Delivery") {
@@ -178,6 +178,31 @@ const updateStatus = async (req, res) => {
     </div>
   `
       );
+      if (status === "Cancellation Requested") {
+        await sendMail(
+          adminEmail,
+          "Cancellation Request Received - RotiChapati",
+          `
+          <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f7f7f7;">
+            <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+              <h2 style="color: #d35400;">Cancellation Request Alert</h2>
+              <p style="font-size: 16px; color: #333;">
+                Customer <strong>${updatedOrder.address.firstName} ${updatedOrder.address.lastName}</strong> has requested to cancel their order.
+              </p>
+              <p style="font-size: 16px; color: #333;">
+                <strong>Order ID:</strong> ${updatedOrder._id}<br/>
+                <strong>Amount:</strong> $${updatedOrder.amount}
+              </p>
+              <hr style="margin: 30px 0;">
+              <p style="font-size: 14px; color: #888;">
+                Please review and process the cancellation request in the admin panel.
+              </p>
+              <p style="font-size: 14px; color: #888;">- Automated RotiChapati System</p>
+            </div>
+          </div>
+          `
+        );
+      }
     } else {
       console.log("No email found for this order.");
     }
