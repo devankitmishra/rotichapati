@@ -28,3 +28,30 @@ a{
     opacity: 1;
   }
 }
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+body, html {
+  overflow: hidden; /* This will hide both horizontal and vertical scrollbars */
+  height: 100%;
+}
+
+/* Allow scrolling even though the scrollbar is hidden */
+body {
+  overflow: -moz-scrollbars-none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer */
+}
+
+/* Hide scrollbar for WebKit browsers */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* You can also prevent scrolling on the page if needed (optional) */
+body {
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Allow scrolling on specific elements */
+body {
+  overflow-y: scroll; /* Vertical scrolling */
+}

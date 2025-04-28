@@ -1,5 +1,57 @@
+/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+.Toastify__toast-container {
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: fixed !important;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 100%; /* Optional: Set max-width if you need it */
+  z-index: 9999;
+}
+
+.Toastify__toast-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.Toastify__toast-container {
+  scrollbar-width: none; 
+}
+
+/* Style for individual toasts */
+.Toastify__toast {
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  max-width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile-specific customizations */
 @media (max-width: 600px) {
-  .toast-container {
-    width: 200px;
+  .Toastify__toast-container {
+    width: 70%;
+    padding: 0 10px;
+  }
+
+  .Toastify__toast {
+    font-size: 12px;
+    padding: 6px 10px;
+    line-height: 1.2;
+    min-height: 40px;
   }
 }
+
